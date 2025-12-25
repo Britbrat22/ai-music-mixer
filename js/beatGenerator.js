@@ -95,18 +95,18 @@ class BeatGenerator {
         
         for (let i = 0; i < duration && startSample + i < buffer.length; i++) {
             const t = i / this.sampleRate;
-            const sample = Math.sin(2 * Math.PI * frequency * t) * envelope[i] * 0.8;
+            const sample = Math.sin(2 * Math.PI * frequency * t) * envelope[i] * 1.5;
             buffer[startSample + i] += sample;
         }
     }
 
     generateSnareDrum(buffer, startSample, duration) {
         // Generate a simple snare drum sound (noise with envelope)
-        const envelope = this.createEnvelope(duration, 0.005, 0.15);
+        const envelope = this.createEnvelope(duration, 0.6, 0.15);
         
         for (let i = 0; i < duration && startSample + i < buffer.length; i++) {
             const noise = (Math.random() - 0.5) * 2;
-            const sample = noise * envelope[i] * 0.6;
+            const sample = noise * envelope[i] * 1.3;
             buffer[startSample + i] += sample;
         }
     }
@@ -118,7 +118,7 @@ class BeatGenerator {
         for (let i = 0; i < duration && startSample + i < buffer.length; i++) {
             const noise = (Math.random() - 0.5) * 2;
             const filtered = this.applyHighPassFilter(noise, i);
-            const sample = filtered * envelope[i] * 0.4;
+            const sample = filtered * envelope[i] * 1.2;
             buffer[startSample + i] += sample;
         }
     }
