@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build outputs
+dist/
+build/
+*.log
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Audio files (large files should not be committed)
+*.mp3
+*.wav
+*.m4a
+*.flac
+*.aac
+
+# Model files (large AI models)
+*.bin
+*.onnx
+*.pb
+*.tflite
+
+# Environment files
+.env
+.env.local
+
+# Coverage reports
+coverage/
+.nyc_output/
+
+
+
