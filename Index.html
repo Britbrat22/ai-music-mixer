@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Music Mixer & Mastering Tool</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-music"></i> AI Music Mixer</h1>
+            <p>Professional AI-powered vocal cleaning and beat replacement</p>
+        </header>
+
+        <main>
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Upload Your Track</h3>
+                    <p>Drag & drop or click to select MP3/WAV file</p>
+                    <input type="file" id="audioFile" accept="audio/*" hidden>
+                </div>
+                <div class="file-info" id="fileInfo" style="display: none;">
+                    <span id="fileName"></span>
+                    <button id="removeFile" class="btn-small"><i class="fas fa-times"></i></button>
+                </div>
+            </section>
+
+            <!-- Processing Options -->
+            <section class="options-section">
+                <h3>Processing Options</h3>
+                <div class="options-grid">
+                    <div class="option-card">
+                        <label class="toggle-label">
+                            <input type="checkbox" id="vocalCleaning" checked>
+                            <span class="toggle-slider"></span>
+                            <div class="option-content">
+                                <i class="fas fa-microphone"></i>
+                                <h4>Vocal Cleaning</h4>
+                                <p>Remove noise and enhance vocal clarity</p>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div class="option-card">
+                        <label class="toggle-label">
+                            <input type="checkbox" id="beatReplacement">
+                            <span class="toggle-slider"></span>
+                            <div class="option-content">
+                                <i class="fas fa-drum"></i>
+                                <h4>AI Beat Replacement</h4>
+                                <p>Generate better beats to replace existing ones</p>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div class="option-card">
+                        <label class="toggle-label">
+                            <input type="checkbox" id="autoMastering" checked>
+                            <span class="toggle-slider"></span>
+                            <div class="option-content">
+                                <i class="fas fa-mastercard"></i>
+                                <h4>Auto Mastering</h4>
+                                <p>Professional mastering for radio-ready sound</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Advanced Settings -->
+            <section class="settings-section">
+                <h3>Advanced Settings</h3>
+                <div class="settings-grid">
+                    <div class="setting-group">
+                        <label for="beatStyle">Beat Style:</label>
+                        <select id="beatStyle">
+                            <option value="modern">Modern</option>
+                            <option value="classic">Classic</option>
+                            <option value="electronic">Electronic</option>
+                            <option value="hiphop">Hip-Hop</option>
+                            <option value="rock">Rock</option>
+                        </select>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <label for="vocalIntensity">Vocal Cleaning Intensity:</label>
+                        <input type="range" id="vocalIntensity" min="1" max="10" value="7">
+                        <span id="vocalIntensityValue">7</span>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <label for="outputFormat">Output Format:</label>
+                        <select id="outputFormat">
+                            <option value="mp3">MP3</option>
+                            <option value="wav">WAV</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Process Button -->
+            <section class="process-section">
+                <button id="processButton" class="btn-primary" disabled>
+                    <i class="fas fa-magic"></i> Process Audio
+                </button>
+                <div class="progress-container" id="progressContainer" style="display: none;">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <span id="progressText">Processing...</span>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <h3>Processed Audio</h3>
+                <div class="player-container">
+                    <audio id="audioPlayer" controls></audio>
+                    <div class="download-buttons">
+                        <button id="downloadBtn" class="btn-success">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                        <button id="newProcessBtn" class="btn-secondary">
+                            <i class="fas fa-redo"></i> Process Another
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Powered by AI & Web Audio API | Works on any device</p>
+        </footer>
+    </div>
+
+    <!-- Loading Modal -->
+    <div id="loadingModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="loading-spinner"></div>
+            <h3>Loading AI Models...</h3>
+            <p>This may take a moment on first load</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@magenta/music@latest"></script>
+    <script src="js/audioProcessor.js"></script>
+    <script src="js/aiModels.js"></script>
+    <script src="js/beatGenerator.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
