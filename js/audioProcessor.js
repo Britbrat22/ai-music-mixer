@@ -1,4 +1,4 @@
-lass AudioProcessor {
+class AudioProcessor {
     constructor() {
         this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
         this.sampleRate = this.audioContext.sampleRate;
