@@ -27,13 +27,13 @@ class AudioProcessor {
                 let sample = inputData[i];
                 
                 // Simple noise gate
-                if (Math.abs(sample) < 0.01 * intensity) {
+                if (Math.abs(sample) < 0.05 * intensity) {
                     sample *= 0.1;
                 }
                 
                 // Enhance clarity (simple high-frequency boost simulation)
                 if (Math.abs(sample) > 0.001) {
-                    sample *= 1 + (intensity * 0.3);
+                    sample *= 1 + (intensity * 0.8);
                 }
                 
                 // Prevent clipping
